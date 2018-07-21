@@ -1,26 +1,85 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0http://maven.apache.org/xsd/maven-4.0.0.xsd">
- 
-	<!-- 模型版本。maven2.0必须是这样写，现在是maven2唯一支持的版本 -->
-	<modelVersion>4.0.0</modelVersion>
- 
-	<!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.winner.trade，maven会将该项目打成的jar包放本地路径：/com/winner/trade -->
-	<groupId>com.java.test</groupId>
- 
-	<!-- 本项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 -->
-	<artifactId>gjyand-core</artifactId>
- 
-	<!-- 本项目目前所处的版本号 -->
-	<version>1.0.0-SNAPSHOT</version>
- 
-	<!-- 打包的机制，如pom,jar, maven-plugin, ejb, war, ear, rar, par，默认为jar -->
-	<packaging>jar</packaging>
-	<!-- 帮助定义构件输出的一些附属构件,附属构件与主构件对应，有时候需要加上classifier才能唯一的确定该构件 不能直接定义项目的classifer,因为附属构件不是项目直接默认生成的，而是由附加的插件帮助生成的 -->
-	<classifier></classifier>
-	<!-- 为pom定义一些常量，在pom中的其它地方可以直接引用 使用方式 如下 ：${file.encoding} -->
-	<properties>
-		<file.encoding>UTF-8</file.encoding>
-		<java.source.version>1.5</java.source.version>
-		<java.target.version>1.5</java.target.version>
-	</properties>
-</project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.htcf.wangzhan</groupId>
+<artifactId>dubbo_proj</artifactId>
+<packaging>war</packaging>
+<version>1.0</version>
+<name>dubbo_proj</name>
+<url>http://maven.apache.org</url>
+<properties>  
+    <org.springframework.version>3.2.8.RELEASE</org.springframework.version>  
+</properties>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>4.2.1.RELEASE</version>
+    </dependency>
+</dependencies>
+  <profiles>
+<profile>
+<id>dev</id>
+<properties>
+<env>dev</env>
+<maven.compiler.source>1.8.0</maven.compiler.source>
+<maven.compiler.target>1.8.0</maven.compiler.target>
+<maven.compiler.compilerVersion>1.8.0</maven.compiler.compilerVersion>
+</properties>
+<activation>
+<activeByDefault>true</activeByDefault>
+<jdk>1.8.0</jdk>
+</activation>
+</profile>
+<profile>
+<id>test</id>
+<properties>
+<env>test</env>
+<maven.compiler.source>1.8.0</maven.compiler.source>
+<maven.compiler.target>1.8.0</maven.compiler.target>
+<maven.compiler.compilerVersion>1.8.0</maven.compiler.compilerVersion>
+</properties>
+<activation>
+<jdk>1.8.0</jdk>
+</activation>
+</profile>
+<profile>
+<id>prod</id>
+<properties>
+<env>prod</env>
+<maven.compiler.source>1.8.0</maven.compiler.source>
+<maven.compiler.target>1.8.0</maven.compiler.target>
+<maven.compiler.compilerVersion>1.8.0</maven.compiler.compilerVersion>
+</properties>
+<activation>
+<jdk>1.8.0</jdk>
+</activation>
+</profile>
+</profiles>
+  <build>
+<finalName>${project_name}</finalName>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-war-plugin</artifactId>
+<version>2.4</version>
+
+
+<configuration>
+<filters>
+<filter></filter>
+</filters>
+<webResources>
+<resource>
+<directory>JavaTest</directory>
+<filtering>true</filtering>
+<includes>
+</includes>
+</resource>
+</webResources>
+</configuration>
+</plugin>
+</plugins> 
+ <defaultGoal>compile</defaultGoal>
+</build> 
+</project> 
